@@ -1,16 +1,11 @@
 using UnityEngine;
 
-/// <summary>
-/// Spawns a swarm of orbiting enemies inside the camera view at start.
-/// Each enemy gets a slightly randomised orbit radius, speed and direction.
-/// </summary>
+
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private EnemyShip enemyPrefab;
     [SerializeField] private Transform player;
     [SerializeField] private int enemyCount = 9;
-
-    [Header("Randomisation")]
     [SerializeField] private Vector2 orbitRadiusRange = new Vector2(3.5f, 7f);
     [SerializeField] private Vector2 orbitSpeedRange  = new Vector2(2f, 4.5f);
 
@@ -21,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
         float halfW = halfH * cam.aspect;
         Vector3 c = cam.transform.position;
 
+        //dynamically spawns enemies and begins their orbit
         for (int i = 0; i < enemyCount; i++)
         {
             Vector3 pos = new Vector3(
